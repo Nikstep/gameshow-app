@@ -1,3 +1,7 @@
+/* TODO
+1. Convert to uppercase?
+*/
+
 // Get the element with the ID of qwerty and save it to a variable.
 const keyboardDiv = document.querySelector("#qwerty");
 
@@ -14,7 +18,7 @@ startGameButton.addEventListener("click", myFunction = () => {
 });
 
 // Create a phrases array that contains at least 5 different phrases as strings.
-const phrasesArray = ["Stick to your guns", "Slippery slopes", "Son of a gun", "Step on it", "Stick a fork in it"];
+const phrasesArray = ["stick to your guns", "slippery slopes", "son of a gun", "step on it", "stick a fork in it"];
 
 // Create a getRandomPhraseAsArray function. It must take any given array of strings and return an array of characters.
 function getRandomPhraseAsArray(arr){ 
@@ -39,7 +43,7 @@ const addPhraseToDisplay = (arr) => {
         ul.appendChild(li);
     }
 }
-    
+
 addPhraseToDisplay(getRandomPhraseAsArray(phrasesArray));
 
 // Create a checkLetter function.
@@ -55,7 +59,12 @@ const checkLetter = (inputLetter) => {
     }
 }
 
-addPhrasetoDisplay(getRandomPhraseAsArray(phrases)); 
-
-
-console.log("breakpoint");
+// Add an event listener to the keyboard.
+keyboardDiv.addEventListener("click", myFunction = (e) => {
+    const buttonPressed = e.target;
+    if (buttonPressed.tagName  === "BUTTON") {
+        buttonPressed.className = "chosen";
+        buttonPressed.setAttribute("disabled", "true");
+        checkLetter(buttonPressed.textContent);
+    }
+});
