@@ -40,6 +40,19 @@ const addPhraseToDisplay = (arr) => {
     }
 }
     
+addPhraseToDisplay(getRandomPhraseAsArray(phrasesArray));
+
+// Create a checkLetter function.
+const checkLetter = (inputLetter) => {
+    const letter = document.querySelectorAll(".letter");
+    for (i = 0; i < letter.length; i++) {
+        if (letter[i].textContent == inputLetter) {
+            letter[i].className += " show";
+            // Why am I doing this?
+            // const correctLetter = letter[i];
+            // return correctLetter;
+        }
+    }
 }
 
 addPhrasetoDisplay(getRandomPhraseAsArray(phrases)); 
