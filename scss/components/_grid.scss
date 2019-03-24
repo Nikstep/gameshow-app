@@ -1,0 +1,23 @@
+.grid {
+  &__row {
+    @include flexy(row, flex-start);
+  }
+
+  &__col {
+    @for $i from 1 through 12 {
+      &--#{$i} {
+          // Make column width a percentage of total columns
+          flex-basis: #{$i / 12 * 100 + "%"};
+          // Other styles
+          background-color: red;
+      }
+    }
+  }
+}
+
+// Target all grid_col's except the first
+[class^="grid__col"] {
+  & + & {
+      margin-left: 20px;
+  }
+}
