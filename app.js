@@ -25,7 +25,20 @@ function getRandomPhraseAsArray(arr){
 const randomPhrase = getRandomPhraseAsArray(phrasesArray);
 
 // Set the game display.
-function addPhraseToDisplay(arr){
+const addPhraseToDisplay = (arr) => {
+    const ul = document.querySelector("#phrase ul");
+    for (i = 0; i < arr.length; i++) {
+        let li = document.createElement("li")
+        li.textContent = arr[i];
+        // Give class of "letter" if it contains letter, if not give class of "space".
+        if (arr[i].match(/[a-z]/i) ) {
+            li.className = "letter";
+        } else {
+            li.className = "space";
+        }
+        ul.appendChild(li);
+    }
+}
     
 }
 
