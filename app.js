@@ -5,9 +5,11 @@
 
 const keyboardDiv = document.querySelector("#qwerty");
 const phraseDiv = document.querySelector("#phrase");
-const hearts =  document.querySelectorAll(".tries img");
-let missed = 0;
-const phrases = [
+const heartImages = document.querySelectorAll(".tries img");
+const startButton = document.querySelector(".btn__reset");
+const overlayDiv = document.querySelector("#overlay");
+let wrongGuesses = 0;
+const phrasesArray = [
     "stick to your guns",
     "slippery slopes", 
     "son of a gun", 
