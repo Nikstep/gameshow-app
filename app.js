@@ -1,8 +1,3 @@
-// TODO
-// Convert to uppercase or lowercase
-// Add elses and error messages?
-// Refactor
-
 const keyboardDiv = document.querySelector("#qwerty");
 const phraseDiv = document.querySelector("#phrase");
 const heartImages = document.querySelectorAll(".tries img");
@@ -11,9 +6,9 @@ const overlayDiv = document.querySelector("#overlay");
 let wrongGuesses = 0;
 const phrasesArray = [
     "stick to your guns",
-    "slippery slopes", 
-    "son of a gun", 
-    "step on it", 
+    "slippery slopes",
+    "son of a gun",
+    "step on it",
     "stick a fork in it"
 ];
 
@@ -28,21 +23,19 @@ startButton.addEventListener("click", () => {
     }
 });
 
-// Create a getRandomPhraseAsArray function. It must take any given array of strings and return an array of characters.
-function getRandomPhraseAsArray(arr){ 
-    const max = arr.length;  
-    const index = Math.floor((Math.random() * max));
+// Take array of phrases, select one randomly and return phrase as array of characters.
+function getRandomPhraseAsArray(arr) {
+    const index = Math.floor((Math.random() * arr.length));
     return Array.from(arr[index]);
 }
 
-// Set the game display.
+// Take array of characters, creates new "li" element for each character.
 const addPhraseToDisplay = (arr) => {
-    const ul = document.querySelector("#phrase ul");
-    for (i = 0; i < arr.length; i++) {
-        let li = document.createElement("li")
-        li.textContent = arr[i];
-        // Give class of "letter" if it contains letter, if not give class of "space".
-        if (arr[i].match(/[a-z]/i) ) {
+    const ul = phraseDiv.querySelector("ul");
+    for (value of arr) {
+        const li = document.createElement("li");
+        li.textContent = value;
+        if (value.match(/[a-z]/i)) {
             li.className = "letter";
         } else {
             li.className = "space";
@@ -51,73 +44,86 @@ const addPhraseToDisplay = (arr) => {
     }
 }
 
-
-
-// Create a checkLetter function.
-const checkLetter = (inputLetter) => {
-    const letterFromArray = document.querySelectorAll(".letter");
+// Check if given letter matches letters in phrase.
+const checkLetter = (letter) => {
+    const lettersFromArray = document.querySelectorAll(".letter");
     let correctLetter = null;
-    for (i = 0; i < letterFromArray.length; i++) {
-        if (letterFromArray[i].textContent == inputLetter) {
-            letterFromArray[i].className += " show";
-            correctLetter = letterFromArray[i].textContent;
+    for (value of lettersFromArray) {
+        if (value.textContent === letter) {
+            value.className += " show";
+            correctLetter = letter;
         }
     }
     return correctLetter;
 }
 
-// Add an event listener to the keyboard.
-keyboardDiv.addEventListener("click", myFunction = (e) => {
+/* Listen for clicks inside "keyboardDiv", if element is a "button" disable it and set a class of "chosen", 
+   check if buttons value is a letter in phrase, if not set one heart images src to "lostHeart". */
+keyboardDiv.addEventListener("click", (e) => {
     const buttonPressed = e.target;
     let letterFound = "";
-    if (buttonPressed.tagName  === "BUTTON") {
+    if (buttonPressed.tagName === "BUTTON") {
         buttonPressed.className = "chosen";
         buttonPressed.setAttribute("disabled", "true");
+        // Returns null if letter doesn't match
         letterFound = checkLetter(buttonPressed.textContent);
     }
-    if (letterFound == null) {
-       hearts[missed].src = "images/lostHeart.png";
-        missed += 1;
+    if (letterFound === null) {
+        // Use "wrongGuesses" variable for accessing correct "heartImage"
+        heartImages[wrongGuesses].src = "images/lostHeart.png";
+        wrongGuesses += 1;
     }
     checkWin();
 });
 
-// Create a checkWin function.
+/* Check if the number of letters with class “show” is equal to the number of letters with class “letters”. 
+If they’re equal, show the overlay screen with the “win” class and appropriate text. Otherwise, if the 
+number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text. */
 const checkWin = () => {
-    const showedLetters = document.querySelectorAll(".show").length;
+    const visibleLetters = document.querySelectorAll(".show").length;
     const totalLetters = document.querySelectorAll(".letter").length;
-    if (showedLetters === totalLetters) {
-        document.querySelector("#overlay").className = "win";
-        document.querySelector("#overlay").style.display = "";
-        document.querySelector("#overlay .title").textContent = "Congratulations, you won!"
-        document.querySelector("#overlay .btn__reset").textContent = "Play again"
-    } else if (missed >= 5) {
-        document.querySelector("#overlay").className = "lose";
-        document.querySelector("#overlay").style.display = "";
-        document.querySelector("#overlay .title").textContent = "Sorry, you lost"
-        document.querySelector("#overlay .btn__reset").textContent = "Play again"
+    if (visibleLetters === totalLetters) {
+        overlayDiv.className = "win";
+        overlayDiv.style.display = "";
+        overlayDiv.querySelector(".title").textContent = "Congratulations, you won!"
+        overlayDiv.querySelector(".btn__reset").textContent = "Play again"
+        overlayDiv.querySelector(".btn__reset").className = "btn__reset play_again"
+    } else if (wrongGuesses >= 5) {
+        overlayDiv.className = "lose";
+        overlayDiv.style.display = "";
+        overlayDiv.querySelector(".title").textContent = "Sorry, you lost"
+        overlayDiv.querySelector(".btn__reset").textContent = "Play again"
+        overlayDiv.querySelector(".btn__reset").className = "btn__reset play_again"
     }
 }
 
+// Reset functions
 const resetPhrase = () => {
-    const parent = document.querySelector("#phrase");
-    const child = document.querySelector("#phrase ul")
-    parent.removeChild(child);
+    phraseDiv.removeChild(phraseDiv.querySelector("ul"));
     const ul = document.createElement("ul");
-    parent.appendChild(ul);
+    phraseDiv.appendChild(ul);
 }
-
 const resetHearts = () => {
-    for (i = 0; i < hearts.length; i++) {
-        hearts[i].src = "images/liveHeart.png";
+    for (value of heartImages) {
+        value.src = "images/liveHeart.png";
     }
-    missed = 0;
+    wrongGuesses = 0;
 }
-
 const resetKeyboard = () => {
     const keyboardButtons = keyboardDiv.querySelectorAll("button");
-    for (i = 0; i < keyboardButtons.length; i++) {
-        keyboardButtons[i].removeAttribute("class");
-        keyboardButtons[i].removeAttribute("disabled");
+    for (value of keyboardButtons) {
+        value.removeAttribute("class");
+        value.removeAttribute("disabled");
     }
+}
+
+// Group functions
+const resetGame = () => {
+    resetPhrase();
+    resetHearts();
+    resetKeyboard();
+}
+const newPhrase = () => {
+    getRandomPhraseAsArray(phrasesArray);
+    addPhraseToDisplay(getRandomPhraseAsArray(phrasesArray));
 }
