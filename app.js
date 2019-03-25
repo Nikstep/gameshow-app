@@ -1,15 +1,16 @@
-/* TODO
-1. Convert to uppercase?
-*/
+// TODO
+// Convert to uppercase or lowercase
 
-// Get the element with the ID of qwerty and save it to a variable.
 const keyboardDiv = document.querySelector("#qwerty");
-
-// Get the element with the ID of phrase and save it to a variable.
 const phraseDiv = document.querySelector("#phrase");
-
-// Create a missed variable, initialized to 0, that you’ll use later to keep track of the number of guesses the player has missed.
 let missed = 0;
+const phrases = [
+    "stick to your guns",
+    "slippery slopes", 
+    "son of a gun", 
+    "step on it", 
+    "stick a fork in it"
+];
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
 const startGameButton = document.querySelector(".btn__reset");
@@ -17,16 +18,13 @@ startGameButton.addEventListener("click", myFunction = () => {
     document.querySelector("#overlay").style.display = "none";
 });
 
-// Create a phrases array that contains at least 5 different phrases as strings.
-const phrasesArray = ["stick to your guns", "slippery slopes", "son of a gun", "step on it", "stick a fork in it"];
-
 // Create a getRandomPhraseAsArray function. It must take any given array of strings and return an array of characters.
 function getRandomPhraseAsArray(arr){ 
     const max = arr.length;  
     const index = Math.floor((Math.random() * max));
     return Array.from(arr[index]);
 }
-const randomPhrase = getRandomPhraseAsArray(phrasesArray);
+const randomPhrase = getRandomPhraseAsArray(phrases);
 
 // Set the game display.
 const addPhraseToDisplay = (arr) => {
@@ -44,19 +42,19 @@ const addPhraseToDisplay = (arr) => {
     }
 }
 
-addPhraseToDisplay(getRandomPhraseAsArray(phrasesArray));
+addPhraseToDisplay(getRandomPhraseAsArray(phrases));
 
 // Create a checkLetter function.
 const checkLetter = (inputLetter) => {
-    const letter = document.querySelectorAll(".letter");
-    for (i = 0; i < letter.length; i++) {
-        if (letter[i].textContent == inputLetter) {
-            letter[i].className += " show";
-            // Why am I doing this?
-            // const correctLetter = letter[i];
-            // return correctLetter;
+    const letterFromArray = document.querySelectorAll(".letter");
+    let correctLetter = null;
+    for (i = 0; i < letterFromArray.length; i++) {
+        if (letterFromArray[i].textContent == inputLetter) {
+            letterFromArray[i].className += " show";
+            correctLetter = letterFromArray[i].textContent;
         }
     }
+    return correctLetter;
 }
 
 // Add an event listener to the keyboard.
