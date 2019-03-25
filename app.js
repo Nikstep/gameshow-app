@@ -5,6 +5,7 @@
 
 const keyboardDiv = document.querySelector("#qwerty");
 const phraseDiv = document.querySelector("#phrase");
+const hearts =  document.querySelectorAll(".tries img");
 let missed = 0;
 const phrases = [
     "stick to your guns",
@@ -16,8 +17,20 @@ const phrases = [
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
 const startGameButton = document.querySelector(".btn__reset");
+
 startGameButton.addEventListener("click", myFunction = () => {
     document.querySelector("#overlay").style.display = "none";
+
+    if (document.querySelector("#overlay a.btn__reset").textContent == "Play again" ) { // Relying on text content might not be so smart here
+        resetPhrase();
+        resetHearts();
+        resetKeyboard();
+        getRandomPhraseAsArray(phrases);
+        addPhraseToDisplay(getRandomPhraseAsArray(phrases));
+    } else {
+        getRandomPhraseAsArray(phrases);
+        addPhraseToDisplay(getRandomPhraseAsArray(phrases));
+    }
 });
 
 // Create a getRandomPhraseAsArray function. It must take any given array of strings and return an array of characters.
@@ -26,7 +39,6 @@ function getRandomPhraseAsArray(arr){
     const index = Math.floor((Math.random() * max));
     return Array.from(arr[index]);
 }
-const randomPhrase = getRandomPhraseAsArray(phrases);
 
 // Set the game display.
 const addPhraseToDisplay = (arr) => {
@@ -44,7 +56,7 @@ const addPhraseToDisplay = (arr) => {
     }
 }
 
-addPhraseToDisplay(getRandomPhraseAsArray(phrases));
+
 
 // Create a checkLetter function.
 const checkLetter = (inputLetter) => {
@@ -69,10 +81,8 @@ keyboardDiv.addEventListener("click", myFunction = (e) => {
         letterFound = checkLetter(buttonPressed.textContent);
     }
     if (letterFound == null) {
+       hearts[missed].src = "images/lostHeart.png";
         missed += 1;
-        const parent = document.querySelector("#scoreboard ol");
-        const child = document.querySelector("#scoreboard ol li");
-        parent.removeChild(child);
     }
     checkWin();
 });
@@ -91,5 +101,28 @@ const checkWin = () => {
         document.querySelector("#overlay").style.display = "";
         document.querySelector("#overlay .title").textContent = "Sorry, you lost"
         document.querySelector("#overlay .btn__reset").textContent = "Play again"
+    }
+}
+
+const resetPhrase = () => {
+    const parent = document.querySelector("#phrase");
+    const child = document.querySelector("#phrase ul")
+    parent.removeChild(child);
+    const ul = document.createElement("ul");
+    parent.appendChild(ul);
+}
+
+const resetHearts = () => {
+    for (i = 0; i < hearts.length; i++) {
+        hearts[i].src = "images/liveHeart.png";
+    }
+    missed = 0;
+}
+
+const resetKeyboard = () => {
+    const keyboardButtons = keyboardDiv.querySelectorAll("button");
+    for (i = 0; i < keyboardButtons.length; i++) {
+        keyboardButtons[i].removeAttribute("class");
+        keyboardButtons[i].removeAttribute("disabled");
     }
 }
