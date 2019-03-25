@@ -79,6 +79,7 @@ button {
 
 .letter {
   font-size: var(--font-size-medium);
+  font-family: 'Open Sans', sans-serif;
   height: 65px;
   width: 65px;
   padding: 20px 1px 0 1px;
@@ -86,6 +87,7 @@ button {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  text-transform: uppercase;
 }
 
 .space {
@@ -93,8 +95,10 @@ button {
 }
 
 .show {
-  color: #000;
+  color: #fff;
   background-color: #76CE82;
+  transition: 1s;
+  transform: rotate(1turn);
 }
 
 /* Keyboard */
@@ -112,12 +116,20 @@ button {
 }
 
 .btn__reset {
-  padding: 8px;
+  padding: 20px;
   margin: 50px auto;
-  background: #FFFFFF;
+  background: #FFF;
   border-radius: 5px;
   font-size: var(--font-size-medium);
+  font-family: 'Open Sans', sans-serif;
 }
+
+/* Hearts */
+
+img[src="images/lostHeart.png"] {
+  animation: scaleInOut 2s;
+}
+
 
 /* Overlay */
 
@@ -132,6 +144,7 @@ button {
   left: 0;
   right: 0;
   border-radius: 5px;
+  z-index: 1;
 }
 
 .title {
@@ -160,4 +173,18 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+
+/* Animations */
+
+@keyframes scaleInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
