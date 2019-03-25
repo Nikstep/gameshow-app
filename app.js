@@ -17,21 +17,14 @@ const phrasesArray = [
     "stick a fork in it"
 ];
 
-// Attach a event listener to the “Start Game” button to hide the start screen overlay.
-const startGameButton = document.querySelector(".btn__reset");
-
-startGameButton.addEventListener("click", myFunction = () => {
-    document.querySelector("#overlay").style.display = "none";
-
-    if (document.querySelector("#overlay a.btn__reset").textContent == "Play again" ) { // Relying on text content might not be so smart here
-        resetPhrase();
-        resetHearts();
-        resetKeyboard();
-        getRandomPhraseAsArray(phrases);
-        addPhraseToDisplay(getRandomPhraseAsArray(phrases));
+// Attach event listener to start game button.
+startButton.addEventListener("click", () => {
+    overlayDiv.style.display = "none";
+    if (startButton.className.includes("play_again")) {
+        resetGame();
+        newPhrase();
     } else {
-        getRandomPhraseAsArray(phrases);
-        addPhraseToDisplay(getRandomPhraseAsArray(phrases));
+        newPhrase();
     }
 });
 
