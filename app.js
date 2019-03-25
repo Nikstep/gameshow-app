@@ -24,7 +24,7 @@ startButton.addEventListener("click", () => {
 });
 
 // Take array of phrases, select one randomly and return phrase as array of characters.
-function getRandomPhraseAsArray(arr) {
+const getRandomPhraseAsArray = arr => {
     const index = Math.floor((Math.random() * arr.length));
     return Array.from(arr[index]);
 }
