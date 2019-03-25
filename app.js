@@ -60,9 +60,21 @@ const checkLetter = (inputLetter) => {
 // Add an event listener to the keyboard.
 keyboardDiv.addEventListener("click", myFunction = (e) => {
     const buttonPressed = e.target;
+    let letterFound = "";
     if (buttonPressed.tagName  === "BUTTON") {
         buttonPressed.className = "chosen";
         buttonPressed.setAttribute("disabled", "true");
-        checkLetter(buttonPressed.textContent);
+        letterFound = checkLetter(buttonPressed.textContent);
+    }
+    if (letterFound == null) {
+        missed += 1;
+        const parent = document.querySelector("#scoreboard ol");
+        const child = document.querySelector("#scoreboard ol li");
+        parent.removeChild(child);
     }
 });
+
+// Create a checkWin function.
+const checkWin = () => {
+
+}
