@@ -1,5 +1,7 @@
 // TODO
 // Convert to uppercase or lowercase
+// Add elses and error messages?
+// Refactor
 
 const keyboardDiv = document.querySelector("#qwerty");
 const phraseDiv = document.querySelector("#phrase");
@@ -72,9 +74,22 @@ keyboardDiv.addEventListener("click", myFunction = (e) => {
         const child = document.querySelector("#scoreboard ol li");
         parent.removeChild(child);
     }
+    checkWin();
 });
 
 // Create a checkWin function.
 const checkWin = () => {
-
+    const showedLetters = document.querySelectorAll(".show").length;
+    const totalLetters = document.querySelectorAll(".letter").length;
+    if (showedLetters === totalLetters) {
+        document.querySelector("#overlay").className = "win";
+        document.querySelector("#overlay").style.display = "";
+        document.querySelector("#overlay .title").textContent = "Congratulations, you won!"
+        document.querySelector("#overlay .btn__reset").textContent = "Play again"
+    } else if (missed >= 5) {
+        document.querySelector("#overlay").className = "lose";
+        document.querySelector("#overlay").style.display = "";
+        document.querySelector("#overlay .title").textContent = "Sorry, you lost"
+        document.querySelector("#overlay .btn__reset").textContent = "Play again"
+    }
 }
