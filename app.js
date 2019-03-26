@@ -128,6 +128,6 @@ const resetGame = () => {
     resetKeyboard();
 }
 const newPhrase = () => {
-    const array = getRandomPhraseAsArray(phrasesArray);
+    getRandomPhraseAsArray(phrasesArray);
     addPhraseToDisplay(getRandomPhraseAsArray(phrasesArray));
 }
