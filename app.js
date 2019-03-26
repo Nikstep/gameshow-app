@@ -5,11 +5,11 @@ const startButton = document.querySelector(".btn__reset");
 const overlayDiv = document.querySelector("#overlay");
 let wrongGuesses = 0;
 const phrasesArray = [
-    "stick to your guns",
-    "slippery slopes",
-    "son of a gun",
-    "step on it",
-    "stick a fork in it"
+    "piece of cake",
+    "be awesome",
+    "close but no cigar",
+    "cool as a cucumber",
+    "saved by the bell"
 ];
 
 // Attach event listener to start game button.
