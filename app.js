@@ -3,6 +3,7 @@ const phraseDiv = document.querySelector("#phrase");
 const heartImages = document.querySelectorAll(".tries img");
 const startButton = document.querySelector(".btn__reset");
 const overlayDiv = document.querySelector("#overlay");
+let quoteText = "";
 let wrongGuesses = 0;
 const phrasesArray = [
     "piece of cake",
@@ -26,6 +27,7 @@ startButton.addEventListener("click", () => {
 // Take array of phrases, select one randomly and return phrase as array of characters.
 const getRandomPhraseAsArray = arr => {
     const index = Math.floor((Math.random() * arr.length));
+    quoteText = arr[index];
     return Array.from(arr[index]);
 }
 
@@ -88,12 +90,14 @@ const checkWin = () => {
         overlayDiv.querySelector(".title").textContent = "Congratulations, you won!"
         overlayDiv.querySelector(".btn__reset").textContent = "Play again"
         overlayDiv.querySelector(".btn__reset").className = "btn__reset play_again"
+        overlayDiv.querySelector(".correct__phrase").textContent = quoteText;
     } else if (wrongGuesses >= 5) {
         overlayDiv.className = "lose";
         overlayDiv.style.display = "";
         overlayDiv.querySelector(".title").textContent = "Sorry, you lost"
         overlayDiv.querySelector(".btn__reset").textContent = "Play again"
         overlayDiv.querySelector(".btn__reset").className = "btn__reset play_again"
+        overlayDiv.querySelector(".display__phrase").innerHTML = "<span class='quote__was'>the quote was:</span> " + "<span class='correct__phrase'>" + quoteText + "</span>";
     }
 }
 
@@ -124,6 +128,6 @@ const resetGame = () => {
     resetKeyboard();
 }
 const newPhrase = () => {
-    getRandomPhraseAsArray(phrasesArray);
+    const array = getRandomPhraseAsArray(phrasesArray);
     addPhraseToDisplay(getRandomPhraseAsArray(phrasesArray));
 }
