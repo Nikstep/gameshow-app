@@ -65,6 +65,7 @@ button {
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .main-container {
@@ -134,6 +135,7 @@ button {
   border-radius: 5px;
   font-size: var(--font-size-medium);
   font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
 }
 
 /* Hearts */
