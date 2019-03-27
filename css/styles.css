@@ -1,204 +1,251 @@
 /* Main styles */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300");
 
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
-  --color-start: #5b85b7;
-  --color-neutral: #445069;
-  --color-neutral-light: #D2D2D2;
-  --color-keys: #37474F;
-  --color-keys-light: #E5E5E5;
-  --font-size-large: 60px;
-  --font-size-medium: 20px;
-  --font-size-small: 15px;
-  --transition: all .2s ease-in-out;
+	--color-win: #78cf82;
+	--color-lose: #d94545;
+	--color-start: #5b85b7;
+	--color-neutral: #445069;
+	--color-neutral-light: #d2d2d2;
+	--color-keys: #37474f;
+	--color-keys-light: #e5e5e5;
+	--font-size-large: 60px;
+	--font-size-medium: 20px;
+	--font-size-small: 15px;
+	--transition: all 0.2s ease-in-out;
 }
 
 /* main */
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  justify-content: space-evenly;
-  flex-direction: column;
-  display: flex;
-  height: 100vh;
+	justify-content: space-evenly;
+	flex-direction: column;
+	display: flex;
+	height: 100vh;
 }
 
-li, ol, ul {
-  padding: 0;
-  display: inline-block;
+li,
+ol,
+ul {
+	padding: 0;
+	display: inline-block;
 }
 
 h2 {
-  margin: 0;
-  text-transform: uppercase;
-  font-family: 'Open Sans', sans-serif;
-  font-size: var(--font-size-large);
-  margin: 0;
+	margin: 0;
+	text-transform: uppercase;
+	font-family: "Open Sans", sans-serif;
+	font-size: var(--font-size-large);
+	margin: 0;
 }
 
 .correct__phrase {
-  text-transform: uppercase;
-  font-style: italic;
-  font-family: 'Open Sans', sans-serif;
-  font-size: var(--font-size-medium);
+	text-transform: uppercase;
+	font-style: italic;
+	font-family: "Open Sans", sans-serif;
+	font-size: var(--font-size-medium);
 }
 .quote__was {
-  font-style: normal;
-  font-size: var(--font-size-small);
+	font-style: normal;
+	font-size: var(--font-size-small);
 }
 
 button {
-  margin: 6px;
-  border: 1px solid transparent;
-  padding: .5rem 1rem;
-  color: var(--color-keys);
-  font-size: var(--font-size-medium);
-  background-color: var(--color-keys-light);
-  border-radius: 5px;
-  -webkit-transition: var(--transition);
-  -o-transition: var(--transition);
-  transition: var(--transition);
-  cursor: pointer;
+	margin: 6px;
+	border: 1px solid transparent;
+	padding: 0.5rem 1rem;
+	color: var(--color-keys);
+	font-size: var(--font-size-medium);
+	background-color: var(--color-keys-light);
+	border-radius: 5px;
+	-webkit-transition: var(--transition);
+	-o-transition: var(--transition);
+	transition: var(--transition);
+	cursor: pointer;
 }
 
 .main-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-  max-height: 900px;
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 100%;
+	max-height: 900px;
+	text-align: center;
+	width: 100%;
+	margin: auto;
 }
 
 .section {
-  width: 100%;
-  padding: 10px;
+	width: 100%;
+	padding: 10px;
 }
 
 /* Title */
 
 .header {
-  color: var(--color-start);
+	color: var(--color-start);
 }
 
 /* Phrase */
 
 .letter {
-  font-size: var(--font-size-medium);
-  font-family: 'Open Sans', sans-serif;
-  height: 65px;
-  width: 65px;
-  padding: 20px 1px 0 1px;
-  margin-right: 2px;
-  color: transparent;
-  background: var(--color-neutral-light);
-  border-radius: 5px;
-  text-transform: uppercase;
+	font-size: var(--font-size-medium);
+	font-family: "Open Sans", sans-serif;
+	height: 65px;
+	width: 65px;
+	padding: 20px 1px 0 1px;
+	margin-right: 2px;
+	color: transparent;
+	background: var(--color-neutral-light);
+	border-radius: 5px;
+	text-transform: uppercase;
 }
 
 .space {
-  width: 15px;
+	width: 15px;
 }
 
 .show {
-  color: #fff;
-  background-color: #76CE82;
-  transition: 1s;
-  transform: rotate(1turn);
+	color: #fff;
+	background-color: #76ce82;
+	transition: 1s;
+	transform: rotate(1turn);
 }
 
 /* Keyboard */
 
 .keyrow {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .chosen {
-  background: var(--color-neutral);
-  border-radius: 5px;
-  font-size: var(--font-size-medium);
-  color: #FFFFFF;
+	background: var(--color-neutral);
+	border-radius: 5px;
+	font-size: var(--font-size-medium);
+	color: #ffffff;
 }
 
 .btn__reset {
-  padding: 20px;
-  margin: 50px auto;
-  background: #FFF;
-  border-radius: 5px;
-  font-size: var(--font-size-medium);
-  font-family: 'Open Sans', sans-serif;
-  cursor: pointer;
+	padding: 20px;
+	margin: 50px auto;
+	background: #fff;
+	border-radius: 5px;
+	font-size: var(--font-size-medium);
+	font-family: "Open Sans", sans-serif;
+	cursor: pointer;
 }
 
 /* Hearts */
 
 img[src="images/lostHeart.png"] {
-  animation: scaleInOut 2s;
+	animation: scaleInOut 2s;
 }
-
 
 /* Overlay */
 
 #overlay {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  color: #FFFFFF;
-  justify-content: center;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-radius: 5px;
-  z-index: 1;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	color: #ffffff;
+	justify-content: center;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-radius: 5px;
+	z-index: 1;
 }
 
 .title {
-  color: #FFF;
+	color: #fff;
 }
 
 .start {
-  background-color: var(--color-start);
+	background-color: var(--color-start);
 }
 
 .start a {
-  color: var(--color-win);
+	color: var(--color-win);
 }
 
 .win {
-  background-color: var(--color-win);
+	background-color: var(--color-win);
 }
 
 .win a {
-  color: var(--color-win);
+	color: var(--color-win);
 }
 
 .lose {
-  background-color: var(--color-lose);
+	background-color: var(--color-lose);
 }
 
 .lose a {
-  color: var(--color-lose);
+	color: var(--color-lose);
 }
 
 /* Animations */
 
 @keyframes scaleInOut {
-  0% {
-    transform: scale(1);
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 1300px) {
+	#phrase li {
+		height: 45px;
+		width: 45px;
+    margin-top: 15px;
+    padding: 7px 0;
+	}
+  
+}
+
+@media only screen and (max-width: 900px) {
+  #phrase ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
+}
+
+@media only screen and (max-width: 660px) {
+	#qwerty button {
+		padding: 0.3em;
+	}
+
+	#phrase li {
+		height: 35px;
+		width: 35px;
+		padding: 5px 0;
+		margin-right: 5px;
+		margin-top: 7px;
+	}
+
+	#phrase ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+
+	#overlay h2.title {
+		font-size: var(--font-size-medium);
+	}
 }
