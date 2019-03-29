@@ -31,7 +31,7 @@ let lastQuote;
 const getRandomPhrase = arr => {
   let currentQuote = Math.floor(Math.random() * arr.length);
   if (currentQuote === lastQuote) {
-    return getRandomPhrase();
+    return getRandomPhrase(arr);
   }
   return currentQuote;
 };
