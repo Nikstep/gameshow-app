@@ -31,14 +31,14 @@ let lastQuote;
 const getRandomPhrase = arr => {
   let currentQuote = Math.floor(Math.random() * arr.length);
   if (currentQuote === lastQuote) {
-    return getRandPhrase();
+    return getRandomPhrase();
   }
   return currentQuote;
 };
 
 // Take array of phrases, select one randomly and return phrase as array of characters.
 const getRandomPhraseAsArray = arr => {
-  const index = getRandPhrase(arr);
+  const index = getRandomPhrase(arr);
   lastQuote = index;
   quoteText = arr[index];
   return Array.from(arr[index]);
