@@ -1,5 +1,5 @@
-# gameshow-app
-:game_die: Type in letters and try to guess the correct words and sentences. One wrong guess removes a heart. You can
+# Gameshow App
+Type in letters and try to guess the correct words and sentences. One wrong guess removes a heart. You can
 <a href="https://mwiulsrod.github.io/gameshow-app/">click here</a> to try it out!
 
 ## Treehouse - Unit 6
